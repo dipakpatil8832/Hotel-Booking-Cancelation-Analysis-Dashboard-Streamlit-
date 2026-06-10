@@ -41,18 +41,86 @@ st.markdown("""
 """)
 
 st.header("📊 Dataset Information")
+num_data = {
+    "Column Name": [
+        "lead_time",
+        "arrival_date_year",
+        "arrival_date_day_of_month",
+        "is_repeated_guest",
+        "previous_cancellations",
+        "booking_changes",
+        "days_in_waiting_list",
+        "adr",
+        "total_of_special_requests",
+        "total_stay",
+        "family",
+        "cancel_risk"
+    ],
+    
+    "Description": [
+        "Days between booking and arrival",
+        "Year of arrival",
+        "Day of month of arrival",
+        "Whether customer is a repeated guest (0/1)",
+        "Number of previous cancellations",
+        "Number of booking modifications",
+        "Days spent on waiting list",
+        "Average Daily Rate (room revenue per day)",
+        "Number of special requests made",
+        "Total number of nights stayed",
+        "Number of family members",
+        "Cancellation risk score"
+    ]
+}
 
-st.markdown("""
-**Source:** Hotel Booking Demand Dataset
+cat_data = {
+    "Column Name": [
+        "hotel",
+        "is_canceled",
+        "arrival_date_month",
+        "market_segment",
+        "distribution_channel",
+        "assigned_room_type",
+        "customer_type",
+        "is_canceled_str"
+    ],
+    
+    "Description": [
+        "Type of hotel (City Hotel or Resort Hotel)",
+        "Booking cancellation status",
+        "Month of guest arrival",
+        "Customer market segment",
+        "Booking distribution channel",
+        "Assigned room category",
+        "Customer type",
+        "Text version of cancellation status"
+    ]
+}
+st.markdown("""Dataset Conatain 32,000+ records of hotel bookings with 20+ features including 12 categorical and 8 numerical columns.""")
 
-**Records:** 119,000+
+tab1, tab2 = st.tabs([      
+    "Categorical Columns",
+    "Numerical Columns"
+])
 
-**Features:** 30+
+st.markdown(""" Data source: [Hotel Booking Dataset](https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand) """)
 
-**Hotels Included:**
-- Resort Hotel
-- City Hotel
-""")
+status = st.info("Loading dataset and preparing visualizations...")
+
+with tab1:
+    st.dataframe(
+        pd.DataFrame(num_data),
+        use_container_width=True
+    )
+
+with tab2:
+    st.dataframe(
+        pd.DataFrame(cat_data),
+        use_container_width=True
+    )
+
+    
+
 
 st.header("🛠️ Tools & Technologies")
 
@@ -62,7 +130,6 @@ st.markdown("""
 - NumPy
 - Plotly
 - Streamlit
-- Scikit-Learn
 """)
 
 st.header("📈 Dashboard Sections")

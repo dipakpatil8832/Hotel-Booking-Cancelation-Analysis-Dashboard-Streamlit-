@@ -40,6 +40,11 @@ pg = st.navigation([
         "pages/5_Multivariate_Analysis.py",
         title="🧠 Multivariate Analysis",
         
+    ),
+    st.Page(
+        "pages/Conclusion.py",
+        title="📌 Conclusion & Recommendations",
+        
     )
 ])
 
